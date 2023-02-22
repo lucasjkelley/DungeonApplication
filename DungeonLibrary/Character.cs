@@ -53,11 +53,11 @@ namespace DungeonLibrary
 
 
         //Constructors / CTORS - 1 fully qualified, 1 default/unqualified
-        public Character(string name, int maxLife, int life, int hitChance, int block)
+        public Character(string name, int maxLife, int hitChance, int block)
         {
             Name = name;
             MaxLife = maxLife;
-            Life = life;
+            Life = maxLife;
             HitChance = hitChance;
             Block = block;
         }
@@ -74,17 +74,17 @@ namespace DungeonLibrary
                 $"Hit Chance: {HitChance}\n" +
                 $"Block: {Block}\n";
         }
-        public static int CalcDamage()
+        public int CalcDamage()
         {
             return 0;
         }
-        public static int CalcHitChance(int hitChance)
+        public int CalcHitChance()
         {
-            return hitChance;
+            return HitChance;
         }
-        public static int CalcBlock(int block)
+        public int CalcBlock()
         {
-            return block;
+            return Block;
         }
 
         //CalcBlock() returns an int -> return Block;
