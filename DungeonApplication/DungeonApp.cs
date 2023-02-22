@@ -1,6 +1,6 @@
 ﻿namespace DungeonApplication
 {
-    internal class Program
+    internal class DungeonApp
     {
         static void Main(string[] args)
         {
