@@ -16,6 +16,7 @@ namespace DungeonLibrary
         private string _weaponName;
         private int _bonusHitChance;
         private bool _isTwoHanded;
+        private string _weaponType;
 
         /*
          * int for min damage (business rule that it cannot be less than 0 or > max)
@@ -51,17 +52,23 @@ namespace DungeonLibrary
             get { return _isTwoHanded; }
             set { _isTwoHanded = value; }
         }//end IsTwoHanded
+        public string WeaponType
+        {
+            get { return _weaponType; }
+            set { _weaponType = value; }
+        }
 
 
         //Constructors / CTORS
         //1 fully qualified and 1 unqualified ctor if you want Object Initialization Syntax
-        public Weapon(int maxDamage, int minDamage, string weaponName, int bonusHitChance, bool isTwoHanded)
+        public Weapon(int maxDamage, int minDamage, string weaponName, int bonusHitChance, bool isTwoHanded, string weaponType)
         {
             MaxDamage = maxDamage;
             MinDamage = minDamage;
             WeaponName = weaponName;
             BonusHitChance = bonusHitChance;
             IsTwoHanded = isTwoHanded;
+            WeaponType = weaponType;
         }
         public Weapon() { }
 
@@ -70,6 +77,7 @@ namespace DungeonLibrary
         public override string ToString()
         {
             return $"{WeaponName}\n" +
+                $"Type: {WeaponType}\n" +
                 $"Max Damage: {MaxDamage}\n" +
                 $"Min Damage: {MinDamage}\n" +
                 $"Bonus Hit Chance: {BonusHitChance}\n" +
