@@ -41,9 +41,9 @@ namespace DungeonApplication
             };
 
             Console.WriteLine($"{c1}\n" +
-                              $"Damage: {Character.CalcDamage()}\n" + 
-                              $"Hit Chance: {Character.CalcHitChance(c1.HitChance)}\n" +
-                              $"Block: {Character.CalcBlock(c1.Block)}\n");
+                              $"Damage: {c1.CalcDamage()}\n" + 
+                              $"Hit Chance: {c1.CalcHitChance()}\n" +
+                              $"Block: {c1.CalcBlock()}\n");
                               
         }
     }
