@@ -2,7 +2,9 @@
 
 namespace DungeonLibrary
 {
-    public class Character
+    //"abstract" denotes an "incomplete" class or method.
+    //This tells the program that we will not create any Character objects directly.
+    public abstract class Character
     {
         public static void Header(string title)
         {
@@ -43,12 +45,12 @@ namespace DungeonLibrary
         public int MaxLife
         {
             get { return _maxLife; }
-            set { _maxLife = value ; }//TODO do I need to set anything business rule so that life cannot equal more than max life?
+            set { _maxLife = value ; }
         }//end MaxLife
         public int Life
         {
             get { return _life; }
-            set { _life = value; }
+            set { _life = value > MaxLife ? MaxLife : value; }
         }//end Life
 
 
@@ -69,20 +71,18 @@ namespace DungeonLibrary
         public override string ToString()
         {
             return $"{Name}\n" +
-                $"Max Life: {MaxLife}\n" +
-                $"Life: {Life}\n" +
+                $"Life: {Life} of {MaxLife}\n" +
                 $"Hit Chance: {HitChance}\n" +
                 $"Block: {Block}\n";
         }
-        public int CalcDamage()
-        {
-            return 0;
-        }
-        public int CalcHitChance()
+        public abstract int CalcDamage();//an abstract method just says somewhere down the line, one of the child classes 
+                                        //MUST implement this with some functionality
+        
+        public virtual int CalcHitChance()
         {
             return HitChance;
         }
-        public int CalcBlock()
+        public virtual int CalcBlock()
         {
             return Block;
         }
