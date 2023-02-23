@@ -33,21 +33,15 @@ namespace DungeonApplication
                               $"Bonus Hit Chance: {w1.BonusHitChance}\n");
 
 
+
             //Build and test a character - include CalcBlock(), CalcHitChance(), CalcDamage()
-            Character c1 = new Character()
-            {
-                Name = "Hero-Man",
-                MaxLife = 100,
-                Life = 80,
-                HitChance = 95,
-                Block = 25,
-            };
+            Player c1 = new("Hero-Man",100,50,25,Race.Human,w1);
 
             Console.WriteLine($"{c1}\n" +
-                              $"Damage: {c1.CalcDamage()}\n" + 
+                              $"Damage: {c1.CalcDamage()}\n" +
                               $"Hit Chance: {c1.CalcHitChance()}\n" +
                               $"Block: {c1.CalcBlock()}\n");
-                              
+
         }
     }
 }
