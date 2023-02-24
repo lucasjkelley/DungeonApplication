@@ -56,8 +56,7 @@ namespace DungeonLibrary
                 default:
                     break;
             }
-            return base.ToString() + $"\nWeapon: {EquippedWeapon}\n" +
-                $"Description: {description}";
+            return base.ToString() + $"\nWeapon: {EquippedWeapon}\n";
         }
 
 

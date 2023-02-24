@@ -14,19 +14,18 @@ namespace DungeonApplication
             #region Player Creation
             //TODO Variable to keep score
             int score = 0;
-            //TODO Weapon creation
-            Weapon w1 = new Weapon()
-            {
-                WeaponName = "Maerlyn's Staff",
-                Type = WeaponType.Staff,
-                MaxDamage = 40,
-                MinDamage = 5,
-                BonusHitChance = 4,
-                IsTwoHanded = true,
-            };
-            //TODO Player Object creation
-            Player c1 = new("Hero-Man", 100, 50, 25, Race.Human, w1);
 
+            //TODO Weapon creation
+            //Possible expansion - Display a list of pre-created weapons and let them pick one. Or, pick one for them randomly.
+            Weapon sword = new Weapon(8, 1, "Long Sword", 10, false, WeaponType.Sword);
+
+            //Weapon w1 = new Weapon(19, 1, "Maerlyn's Rainbow", 4, true, WeaponType.Orb);
+
+            //TODO Player Object creation
+            //Potential expansion - Allow them to enter their own name.
+            //Show them the possible races and let them pick one.
+            Player player = new("Leeroy Jenkins", 40, 70, 5, Race.Elf, sword);
+                        
             #endregion
 
             #region Main Game Loop
@@ -35,18 +34,20 @@ namespace DungeonApplication
             int outerCount = 0;
             do
             {
-                //Console.WriteLine("Outer " + ++outerCount);
-                //TODO Generation a random room
+                // Generation a random room
                 Console.WriteLine(GetRoom());
-                //TODO Select a random monster to inhabit the room
-                Console.WriteLine("Here's a demon!");
+
+                // Select a random monster to inhabit the room
+                Monster monster = Monster.GetMonster();
+                Console.WriteLine($"In this room {monster.Name}!");
+
+
                 #region Gameplay Menu Loop
                 bool reload = false;
                 
                 do
                 {
-                    //Console.WriteLine("Inner " + ++innerCount);
-                    //TODO Gameplay Menu
+                    // Gameplay Menu
                     #region Menu
                     Console.Write("\nPlease choose an action:\n" +
                         "A) Attack\n" +
@@ -60,24 +61,43 @@ namespace DungeonApplication
                     switch (userChoice)
                     {
                         case ConsoleKey.A:
-                            //TODO combat
-                            Console.WriteLine("ATTACK!");
+                            // combat
+                            //Potential Expansion : weapon/race bonus attack
+                            //if race == darkelf -> player.DoAttack(monster)
+                            Combat.DoBattle(player, monster);
+                            //check if the monster is dead
+                            if (monster.Life <= 0)
+                            {
+                                //Combat rewards -> money, health, loot EXPANSION
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine($"You killed {monster.Name}!");
+                                Console.ResetColor();
+                                //flip the inner loop bool to true
+                                reload = true;
+
+                                score++;
+                            }
                             break;
 
                         case ConsoleKey.R:
-                            //TODO Attack of opportunity
+                            // Attack of opportunity
                             Console.WriteLine("Run away!");
-                            reload = true;
+                            Console.WriteLine($"{monster.Name} attacks you as you flee!");
+                            Combat.DoAttack(monster, player);
+                            Console.WriteLine();//Formatting
+                            reload = true;//new room, new monster
                             break;
 
                         case ConsoleKey.P:
-                            //TODO Player info
+                            // Player info
                             Console.WriteLine("Player Info: ");
+                            Console.WriteLine(player);
                             break;
                         
                         case ConsoleKey.M:
-                            //TODO Monster info
+                            // Monster info
                             Console.WriteLine("Demon info: ");
+                            Console.WriteLine(monster);
                             break;
                         
                         case ConsoleKey.X:
@@ -93,7 +113,12 @@ namespace DungeonApplication
                     }//end switch
 
                     #endregion
-                    //TODO Check player life
+                    // Check player life
+                    if (player.Life <= 0)
+                    {
+                        Console.WriteLine("Dude, you're getting a dell! ...and you died.");
+                        exit = true;
+                    }
 
                 } while (!reload && !exit); // if either exit or reload is true, the inner loop
                                             //will exit.
@@ -112,7 +137,11 @@ namespace DungeonApplication
         {
             string[] rooms =
             {
-                "1","2","3","4","5"
+                "A giant wicker basket",
+                "A cavernous room deep in the earth",
+                "Brightly colored kids playplace",
+                "An abandoned railyard",
+                "A giant Tree house"
             };
 
             Random rand = new Random();

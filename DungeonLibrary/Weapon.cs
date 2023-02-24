@@ -30,12 +30,12 @@ namespace DungeonLibrary
         public int MinDamage
         {
             get { return _minDamage; }
-            set { _minDamage = value > MaxDamage ? MaxDamage : value; }
+            set { _minDamage = value; }
         }//end MinDamage
         public int MaxDamage
         {
             get { return _maxDamage; }
-            set { _maxDamage = value <= 0 ? 0 : value; }
+            set { _maxDamage = value; }
         }//end MaxDamage
         public string WeaponName
         {
@@ -70,8 +70,7 @@ namespace DungeonLibrary
             IsTwoHanded = isTwoHanded;
             Type = type;
         }
-        public Weapon() { }
-
+        
         //Methods
         //Nicely formatted ToString() override
         public override string ToString()

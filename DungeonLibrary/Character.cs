@@ -70,7 +70,7 @@ namespace DungeonLibrary
         //ToString() override
         public override string ToString()
         {
-            return $"{Name}\n" +
+            return $"Name: {Name}\n" +
                 $"Life: {Life} of {MaxLife}\n" +
                 $"Hit Chance: {HitChance}\n" +
                 $"Block: {Block}\n";

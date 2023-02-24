@@ -12,6 +12,7 @@ namespace DungeonLibrary
         Dagger,
         Projectile,
         Staff,
-        Explosive
+        Explosive,
+        Orb
     }
 }
