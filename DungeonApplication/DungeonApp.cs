@@ -1,4 +1,6 @@
-﻿namespace DungeonApplication
+﻿using DungeonLibrary;
+
+namespace DungeonApplication
 {
     internal class DungeonApp
     {
@@ -13,8 +15,17 @@
             //TODO Variable to keep score
             int score = 0;
             //TODO Weapon creation
-
+            Weapon w1 = new Weapon()
+            {
+                WeaponName = "Maerlyn's Staff",
+                Type = WeaponType.Staff,
+                MaxDamage = 40,
+                MinDamage = 5,
+                BonusHitChance = 4,
+                IsTwoHanded = true,
+            };
             //TODO Player Object creation
+            Player c1 = new("Hero-Man", 100, 50, 25, Race.Human, w1);
 
             #endregion
 
