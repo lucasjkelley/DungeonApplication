@@ -24,9 +24,12 @@ namespace DungeonApplication
             //TODO Player Object creation
             //Potential expansion - Allow them to enter their own name.
             //Show them the possible races and let them pick one.
-            Player player = new("Leeroy Jenkins", 40, 70, 5, Race.Elf, sword);
-                        
+            Player player = new("Elroy Jenkins", 40, 70, 5, Race.Elf, sword);
+            //Player player1
+
             #endregion
+
+            Thread.Sleep(200);
 
             #region Main Game Loop
             bool exit = false;
@@ -39,12 +42,12 @@ namespace DungeonApplication
 
                 // Select a random monster to inhabit the room
                 Monster monster = Monster.GetMonster();
-                Console.WriteLine($"In this room {monster.Name}!");
+                Console.WriteLine($"In this room is {monster.Name}!");
 
 
                 #region Gameplay Menu Loop
                 bool reload = false;
-                
+
                 do
                 {
                     // Gameplay Menu
@@ -70,7 +73,7 @@ namespace DungeonApplication
                             {
                                 //Combat rewards -> money, health, loot EXPANSION
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($"You killed {monster.Name}!");
+                                Console.WriteLine($"You killed {monster.Name}!\n");
                                 Console.ResetColor();
                                 //flip the inner loop bool to true
                                 reload = true;
@@ -93,13 +96,13 @@ namespace DungeonApplication
                             Console.WriteLine("Player Info: ");
                             Console.WriteLine(player);
                             break;
-                        
+
                         case ConsoleKey.M:
                             // Monster info
                             Console.WriteLine("Demon info: ");
                             Console.WriteLine(monster);
                             break;
-                        
+
                         case ConsoleKey.X:
                         case ConsoleKey.E:
                         case ConsoleKey.Escape:
@@ -116,7 +119,7 @@ namespace DungeonApplication
                     // Check player life
                     if (player.Life <= 0)
                     {
-                        Console.WriteLine("Dude, you're getting a dell! ...and you died.");
+                        Console.WriteLine("\nDude, you're getting a dell! ...and you died.");
                         exit = true;
                     }
 
@@ -127,7 +130,7 @@ namespace DungeonApplication
             } while (!exit);//If exit is true, the outer loop will exit as well.
 
             //Show the score
-            Console.WriteLine("You defeated " + score + " demon" + (score == 1 ? "." : "s."));
+            Console.WriteLine("\nYou defeated " + score + " demon" + (score == 1 ? "." : "s."));
 
             #endregion
 
@@ -137,11 +140,11 @@ namespace DungeonApplication
         {
             string[] rooms =
             {
-                "A giant wicker basket",
+                "Ye Olde English Castle.",
                 "A cavernous room deep in the earth",
-                "Brightly colored kids playplace",
-                "An abandoned railyard",
-                "A giant Tree house"
+                "A brightly colored McDonald's playplace.",
+                "An abandoned railyard.",
+                "A giant Tree house."
             };
 
             Random rand = new Random();

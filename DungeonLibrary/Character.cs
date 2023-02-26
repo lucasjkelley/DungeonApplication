@@ -45,7 +45,7 @@ namespace DungeonLibrary
         public int MaxLife
         {
             get { return _maxLife; }
-            set { _maxLife = value ; }
+            set { _maxLife = value; }
         }//end MaxLife
         public int Life
         {
@@ -76,8 +76,8 @@ namespace DungeonLibrary
                 $"Block: {Block}\n";
         }
         public abstract int CalcDamage();//an abstract method just says somewhere down the line, one of the child classes 
-                                        //MUST implement this with some functionality
-        
+                                         //MUST implement this with some functionality
+
         public virtual int CalcHitChance()
         {
             return HitChance;
