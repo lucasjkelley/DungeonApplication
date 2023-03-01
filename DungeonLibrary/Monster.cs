@@ -21,9 +21,9 @@ namespace DungeonLibrary
             get { return _minDamage; }
             set { _minDamage = value > 0 && value <= MaxDamage ? value : 1; }
         }
-                
+
         //Constructors / CTORS
-        
+
         public Monster(string name, int maxLife, int hitChance, int block, int maxDamage, int minDamage, string description) : base(name, maxLife, hitChance, block)
         {
             MaxDamage = maxDamage;
@@ -40,7 +40,9 @@ namespace DungeonLibrary
 
         public override int CalcDamage()
         {
-            return new Random().Next(MinDamage, MaxDamage +1);
+
+            return new Random().Next(MinDamage, MaxDamage + 1);
+
         }
 
         public static Monster GetMonster()

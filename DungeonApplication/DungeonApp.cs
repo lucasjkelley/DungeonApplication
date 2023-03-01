@@ -1,4 +1,5 @@
 ﻿using DungeonLibrary;
+using System.ComponentModel;
 
 namespace DungeonApplication
 {
@@ -12,20 +13,29 @@ namespace DungeonApplication
             #endregion
 
             #region Player Creation
-            //TODO Variable to keep score
+            
             int score = 0;
 
-            //TODO Weapon creation
-            //Possible expansion - Display a list of pre-created weapons and let them pick one. Or, pick one for them randomly.
-            Weapon sword = new Weapon(8, 1, "Long Sword", 10, false, WeaponType.Sword);
 
-            //Weapon w1 = new Weapon(19, 1, "Maerlyn's Rainbow", 4, true, WeaponType.Orb);
+            //Possible expansion - Display a list of pre-created weapons and let them pick one. Or, pick one for them randomly.
+            Weapon sword = new(8, 1, "Long Sword", 10, false, WeaponType.Sword);
+            Weapon orb = new(8, 1, "Maerlyn's Rainbow", 10, true, WeaponType.Orb);
+            Weapon staff = new(8, 1, "Stick of Truth", 10, true, WeaponType.Staff);
+            Weapon projectile = new(8, 1, "Pineapple of BOOM", 10, false, WeaponType.Projectile);
+            Weapon explosive = new(8, 1, "Cannister of Play-Don't", 10, false, WeaponType.Explosive);
+            Weapon dagger = new(8, 1, "Zambezi Stinger", 10, false, WeaponType.Dagger);
+
 
             //TODO Player Object creation
-            //Potential expansion - Allow them to enter their own name.
-            //Show them the possible races and let them pick one.
-            Player player = new("Elroy Jenkins", 40, 70, 5, Race.Elf, sword);
-            //Player player1
+            Player player = new("Elroy Jenkins", 40, 70, 5, Race.Elf, dagger);
+            Player player1 = new("Zane Malkovich III", 40, 70, 5, Race.Malkovich, staff);
+            Player player2 = new("Roland of Gilead, son of Steven", 50, 70, 20, Race.Human, orb);
+            Player player3 = new("Tim, the Uruk-hai", 50, 70, 20, Race.Orc, explosive);
+            Player player4 = new("Little Nicky", 50, 70, 20, Race.Demon, explosive);
+            List<Player> players = new List<Player>()
+            {
+                player, player1, player2, player3, player4
+            };
 
             #endregion
 
@@ -35,23 +45,57 @@ namespace DungeonApplication
             bool exit = false;
             int innerCount = 0;
             int outerCount = 0;
+
+            Console.Write("Please select your HERO by number: \n");
+            HeroList[] heroes = Enum.GetValues<HeroList>();
+            foreach (HeroList hero in heroes)
+            {
+                string item = hero.ToString().Replace('_', ' ');
+                Console.WriteLine((int)hero + ") " + item);
+            }
+
+            int input = int.Parse(Console.ReadLine());
+            HeroList userHero = (HeroList)input;
+            switch (userHero)
+            {
+                case HeroList.Elroy_Jenkins:
+                    Console.WriteLine("\nNo no, that's his older brother. Yeah, he gets it all the time, it's okay. No worries.\n");
+                    break;
+                case HeroList.Zane_Malkovich_III:
+                    Console.WriteLine("\nNot your ordinary Malkovich. Hmmm, do those even exist?\n");
+                    break;
+                case HeroList.Roland_of_Gilead:
+                    Console.WriteLine("\nDon't get between him and his tower or he'll pull out his big irons, do ye ken?\n");
+                    break;
+                case HeroList.Tim_the_Uruk_hai:
+                    Console.WriteLine("\nIt's Tim. He used to have hate in his heart and eat human flesh. Now, he's the funniest guy at the office!\n");
+                    break;
+                case HeroList.Little_Nicky:
+                    Console.WriteLine("\nNot all demons are scary, some are even good.  This one is... special.\n");
+                    break;
+                default:
+                    break;
+            }
+
             do
             {
-                // Generation a random room
-                Console.WriteLine(GetRoom());
 
-                // Select a random monster to inhabit the room
+                Console.WriteLine("You find yourself in " + GetRoom());
                 Monster monster = Monster.GetMonster();
-                Console.WriteLine($"In this room is {monster.Name}!");
+                Console.WriteLine($"Waiting to fight you is {monster.Name}!");
 
 
-                #region Gameplay Menu Loop
+              #region Gameplay Menu Loop
                 bool reload = false;
 
                 do
                 {
+
+
                     // Gameplay Menu
+
                     #region Menu
+
                     Console.Write("\nPlease choose an action:\n" +
                         "A) Attack\n" +
                         "R) Run away\n" +
@@ -115,20 +159,21 @@ namespace DungeonApplication
                             break;
                     }//end switch
 
-                    #endregion
                     // Check player life
                     if (player.Life <= 0)
                     {
-                        Console.WriteLine("\nDude, you're getting a dell! ...and you died.");
+                        Console.WriteLine("\nDeath comes for us all. But it does seem to favor you...");
                         exit = true;
                     }
+                    #endregion
+
 
                 } while (!reload && !exit); // if either exit or reload is true, the inner loop
                                             //will exit.
-                #endregion
+              
 
             } while (!exit);//If exit is true, the outer loop will exit as well.
-
+            #endregion
             //Show the score
             Console.WriteLine("\nYou defeated " + score + " demon" + (score == 1 ? "." : "s."));
 
@@ -144,21 +189,12 @@ namespace DungeonApplication
                 "A cavernous room deep in the earth",
                 "A brightly colored McDonald's playplace.",
                 "An abandoned railyard.",
-                "A giant Tree house."
+                "A giant Tree house.",
+                "A field of red roses around a looming tower",
+
             };
-
-            Random rand = new Random();
-
-            int index = rand.Next(rooms.Length);
-
-            string room = rooms[index];
-
-            return room;
-
-            //possible refactor
             return rooms[new Random().Next(rooms.Length)];
 
         }//end GetRoom()
-
     }
-}
+}           
