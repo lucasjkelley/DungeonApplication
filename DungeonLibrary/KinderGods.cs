@@ -40,6 +40,7 @@ namespace DungeonLibrary
         public override int CalcBlock()
         {
             if (YouthfulSprint == true && MaxLife <= 7)
+
             {
                 Console.WriteLine("The souls of the children I have consumed grants me enhanced speed! +5 Hit Chance!");
                 HitChance += 5;
@@ -49,3 +50,4 @@ namespace DungeonLibrary
 
     }
 }
+

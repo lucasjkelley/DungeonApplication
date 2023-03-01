@@ -40,7 +40,9 @@ namespace DungeonLibrary
 
         public override int CalcDamage()
         {
+
             return new Random().Next(MinDamage, MaxDamage + 1);
+
         }
 
         public static Monster GetMonster()

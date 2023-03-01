@@ -26,6 +26,13 @@ namespace DungeonLibrary
                 case Race.Human:
                     HitChance += 5;
                     break;
+                case Race.Elf:
+                    Block += 3;
+                    break;
+                case Race.Malkovich:
+                    HitChance += 7;
+                    break;
+
             }
             #endregion
         }
@@ -33,9 +40,7 @@ namespace DungeonLibrary
         //Methods
         public override string ToString()
         {
-            //create a string, switch on Player race and 
-            //write some description about that race
-            string description = PlayerRace.ToString();//TODO description
+            string description = PlayerRace.ToString();
             switch (PlayerRace)
             {
                 case Race.Orc:
@@ -56,8 +61,7 @@ namespace DungeonLibrary
                 default:
                     break;
             }
-            return base.ToString() + $"\nWeapon: {EquippedWeapon}\n" +
-                $"Description: {description}";
+            return base.ToString() + $"\nWeapon: {EquippedWeapon}\n";
         }
 
 

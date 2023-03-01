@@ -16,6 +16,7 @@ namespace DungeonApplication
             
             int score = 0;
 
+
             //Possible expansion - Display a list of pre-created weapons and let them pick one. Or, pick one for them randomly.
             Weapon sword = new(8, 1, "Long Sword", 10, false, WeaponType.Sword);
             Weapon orb = new(8, 1, "Maerlyn's Rainbow", 10, true, WeaponType.Orb);
@@ -37,6 +38,8 @@ namespace DungeonApplication
             };
 
             #endregion
+
+            Thread.Sleep(200);
 
             #region Main Game Loop
             bool exit = false;
@@ -76,15 +79,21 @@ namespace DungeonApplication
 
             do
             {
+
                 Console.WriteLine("You find yourself in " + GetRoom());
                 Monster monster = Monster.GetMonster();
                 Console.WriteLine($"Waiting to fight you is {monster.Name}!");
 
-                #region Gameplay Menu Loop
+
+              #region Gameplay Menu Loop
                 bool reload = false;
-                
+
                 do
                 {
+
+
+                    // Gameplay Menu
+
                     #region Menu
 
                     Console.Write("\nPlease choose an action:\n" +
@@ -158,6 +167,7 @@ namespace DungeonApplication
                     }
                     #endregion
 
+
                 } while (!reload && !exit); // if either exit or reload is true, the inner loop
                                             //will exit.
               
@@ -165,7 +175,7 @@ namespace DungeonApplication
             } while (!exit);//If exit is true, the outer loop will exit as well.
             #endregion
             //Show the score
-            Console.WriteLine("You defeated " + score + " demon" + (score == 1 ? "." : "s."));
+            Console.WriteLine("\nYou defeated " + score + " demon" + (score == 1 ? "." : "s."));
 
             #endregion
 
@@ -181,7 +191,7 @@ namespace DungeonApplication
                 "An abandoned railyard.",
                 "A giant Tree house.",
                 "A field of red roses around a looming tower",
-                "A giant Tree house."
+
             };
             return rooms[new Random().Next(rooms.Length)];
 
