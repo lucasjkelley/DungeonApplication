@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public enum WeaponType
+    public enum HeroList
     {
-        Sword,
-        Dagger,
-        Projectile,
-        Staff,
-        Explosive,
-        Orb
+        Elroy_Jenkins,
+        Zane_Malkovich_III,
+        Roland_of_Gilead,
+        Tim_the_Uruk_hai,
+        Little_Nicky
     }
 }
