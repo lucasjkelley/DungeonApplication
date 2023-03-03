@@ -8,10 +8,10 @@ namespace DungeonLibrary
 {
     public enum HeroList
     {
-        Elroy_Jenkins,
-        Zane_Malkovich_III,
-        Roland_of_Gilead,
-        Tim_the_Uruk_hai,
-        Little_Nicky
+        Elroy_Jenkins = 1,
+        Zane_Malkovich_III = 2,
+        Roland_of_Gilead = 3,
+        Tim_the_Uruk_hai = 4,
+        Little_Nicky = 5
     }
 }
