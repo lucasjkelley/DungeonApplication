@@ -32,10 +32,7 @@ namespace DungeonApplication
             Player player2 = new("Roland of Gilead, son of Steven", 50, 70, 20, Race.Human, orb);
             Player player3 = new("Tim, the Uruk-hai", 50, 70, 20, Race.Orc, explosive);
             Player player4 = new("Little Nicky", 50, 70, 20, Race.Demon, projectile);
-            List<Player> players = new List<Player>()
-            {
-                player, player1, player2, player3, player4
-            };
+          
 
             #endregion
 
@@ -63,25 +60,31 @@ namespace DungeonApplication
                     break;
                 case HeroList.Zane_Malkovich_III:
                     Console.WriteLine("\nNot your ordinary Malkovich. Hmmm, do those even exist?\n");
+                    player = player1;
                     break;
                 case HeroList.Roland_of_Gilead:
                     Console.WriteLine("\nDon't get between him and his tower or he'll pull out his big irons, do ye ken?\n");
+                    player = player2;
                     break;
                 case HeroList.Tim_the_Uruk_hai:
                     Console.WriteLine("\nIt's Tim. He used to have hate in his heart and eat human flesh. Now, he's the funniest guy at the office!\n");
+                    player = player3;
                     break;
                 case HeroList.Little_Nicky:
                     Console.WriteLine("\nNot all demons are scary, some are even good.  This one is... special.\n");
+                    player = player4;
                     break;
                 default:
                     break;
             }
-
+            Console.WriteLine("\n\nExcellent choice. Surely you won't die! Press ENTER to begin.");
+            Console.ReadLine();
+            Console.Clear();
             do
             {
                 Console.WriteLine("You find yourself in " + GetRoom());
                 Monster monster = Monster.GetMonster();
-                Console.WriteLine($"Waiting to fight you is {monster.Name}!");
+                Console.WriteLine($"\nWaiting to fight you is {monster.Name}!");
 
               #region Gameplay Menu Loop
                 bool reload = false;
@@ -112,9 +115,14 @@ namespace DungeonApplication
                             {
                                 //Combat rewards -> money, health, loot EXPANSION
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($"You killed {monster.Name}!\n");
+                                Console.WriteLine($"You killed {monster.Name}! I mean, you straight up slaughtered them. Wow. Wow!\n");
+                                player.Life += 8;
                                 Console.ResetColor();
-                                //flip the inner loop bool to true
+                                Console.WriteLine("\n\nYou stop, only briefly, to drink the blood of your fallen enemy. You regain some health!");
+                                Console.WriteLine("\nPress Enter to continue your journey.");
+                                Console.ReadLine();
+                                Thread.Sleep(200);
+                                Console.Clear();
                                 reload = true;
 
                                 score++;
@@ -122,22 +130,19 @@ namespace DungeonApplication
                             break;
 
                         case ConsoleKey.R:
-                            // Attack of opportunity
                             Console.WriteLine("Run away!");
-                            Console.WriteLine($"{monster.Name} attacks you as you flee!");
+                            Console.WriteLine($"{monster.Name} has you in their grasp! With quick thinking you throw a smoke bomb to the ground. Since you can clearly be seen escaping, {monster.Name} hits you in the ass.");
                             Combat.DoAttack(monster, player);
-                            Console.WriteLine();//Formatting
-                            reload = true;//new room, new monster
+                            Console.WriteLine();
+                            reload = true;
                             break;
 
                         case ConsoleKey.P:
-                            // Player info
                             Console.WriteLine("Player Info: ");
                             Console.WriteLine(player);
                             break;
 
                         case ConsoleKey.M:
-                            // Monster info
                             Console.WriteLine("Demon info: ");
                             Console.WriteLine(monster);
                             break;
@@ -145,9 +150,8 @@ namespace DungeonApplication
                         case ConsoleKey.X:
                         case ConsoleKey.E:
                         case ConsoleKey.Escape:
-                            Console.WriteLine("No one likes a quitter...");
+                            Console.WriteLine("Don't leave!  No one ever plays me anymore. Crying Jordan face.");
                             exit = true;
-                            //reload = true; or see while below
                             break;
 
                         default:
@@ -157,7 +161,8 @@ namespace DungeonApplication
                     // Check player life
                     if (player.Life <= 0)
                     {
-                        Console.WriteLine("\nDeath comes for us all. But it does seem to favor you...");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\n\t**** OH SHIT YOU DIED ****\nDeath comes for us all. However, it does seem to favor you...");
                         exit = true;
                     }
                     #endregion
@@ -168,6 +173,7 @@ namespace DungeonApplication
             } while (!exit);//If exit is true, the outer loop will exit as well.
             #endregion
             //Show the score
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nYou defeated " + score + " demon" + (score == 1 ? "." : "s."));
 
             #endregion
@@ -178,12 +184,12 @@ namespace DungeonApplication
         {
             string[] rooms =
             {
-                "Ye Olde English Castle.",
-                "A cavernous room deep in the earth",
-                "A brightly colored McDonald's playplace.",
-                "An abandoned railyard.",
-                "A giant Tree house.",
-                "A field of red roses around a looming tower",
+                "ye Olde English Castle. You are devastated to find absolutely no 40's of OE anywhere.\nAnger fills you as you prepare to fight, completely sober. ",
+                "a cavernous room deep in the earth. The air is putrid and the whole cavern is super dank.\nAnd not in the way that internet nerds mean. Luckily, you remember that YOU are super dank, in the way internet nerds do mean, and you draw your weapon knowing victory shall come easy.",
+                "a brightly colored McDonald's playplace.\nThis is literal hell for some people, blood will be shed here.",
+                "an abandoned railyard. Mist layers the ground so much that it looks as if you are floating on clouds.\nStep lightly while you battle, there are things resting on the tracks that should not be jostled awake lest you want to feel the full wrath of, what the natives have named, T'homes da TuAnk Enjeen.",
+                "a giant Tree house. Bigger than any tree on earth, this houses multiple rooms and levels. It's big enough that a family of bears could live here.\nThere are bones everywhere, there are piles of feces with what appear to be personal belongings speckled throughout. Hey look! My grandfather's watch! ",
+                "a field of red roses around a looming tower. There is something sweet in the air, but with a bitter aftertaste reminiscent of death.\nThe tower calls to you.",
             };
             return rooms[new Random().Next(rooms.Length)];
 
