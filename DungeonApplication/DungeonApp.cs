@@ -31,7 +31,7 @@ namespace DungeonApplication
             Player player1 = new("Zane Malkovich III", 40, 70, 5, Race.Malkovich, staff);
             Player player2 = new("Roland of Gilead, son of Steven", 50, 70, 20, Race.Human, orb);
             Player player3 = new("Tim, the Uruk-hai", 50, 70, 20, Race.Orc, explosive);
-            Player player4 = new("Little Nicky", 50, 70, 20, Race.Demon, explosive);
+            Player player4 = new("Little Nicky", 50, 70, 20, Race.Demon, projectile);
             List<Player> players = new List<Player>()
             {
                 player, player1, player2, player3, player4
@@ -79,21 +79,16 @@ namespace DungeonApplication
 
             do
             {
-
                 Console.WriteLine("You find yourself in " + GetRoom());
                 Monster monster = Monster.GetMonster();
                 Console.WriteLine($"Waiting to fight you is {monster.Name}!");
-
 
               #region Gameplay Menu Loop
                 bool reload = false;
 
                 do
                 {
-
-
                     // Gameplay Menu
-
                     #region Menu
 
                     Console.Write("\nPlease choose an action:\n" +
@@ -167,11 +162,9 @@ namespace DungeonApplication
                     }
                     #endregion
 
-
                 } while (!reload && !exit); // if either exit or reload is true, the inner loop
                                             //will exit.
               
-
             } while (!exit);//If exit is true, the outer loop will exit as well.
             #endregion
             //Show the score
@@ -191,7 +184,6 @@ namespace DungeonApplication
                 "An abandoned railyard.",
                 "A giant Tree house.",
                 "A field of red roses around a looming tower",
-
             };
             return rooms[new Random().Next(rooms.Length)];
 

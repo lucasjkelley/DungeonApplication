@@ -42,7 +42,7 @@ namespace DungeonLibrary
         {
             if (MaxLife <= 10 && MaxLife >= 5)
             {
-                Console.WriteLine("Music starts playing and Barney begins singing, 'I love you, you love me, I'll re-move your skin while you scream!' +5 Damage!");
+                Console.WriteLine("Music starts playing and Barney begins singing, 'I love you, you love me, I'll re-move your skin while you scream!'\n the Dino gets a +5 Damage bonus!");
                 MaxDamage += 5;
             }
             return Block;
