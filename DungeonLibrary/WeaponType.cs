@@ -8,11 +8,11 @@ namespace DungeonLibrary
 {
     public enum WeaponType
     {
-        Sword,
-        Dagger,
-        Projectile,
-        Staff,
-        Explosive,
-        Orb
+        Sword = 1,
+        Dagger = 2,
+        Projectile = 3,
+        Staff = 4,
+        Explosive = 5,
+        Orb = 6
     }
 }

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dungeon", "DungeonApplicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonLibrary", "DungeonLibrary\DungeonLibrary.csproj", "{0664576C-7E4E-415C-8EC4-09CBDB4CF22A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonTester", "DungeonTester\DungeonTester.csproj", "{7E2CAC14-9601-4DDA-9ED5-6F2ED8D0111A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0664576C-7E4E-415C-8EC4-09CBDB4CF22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0664576C-7E4E-415C-8EC4-09CBDB4CF22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0664576C-7E4E-415C-8EC4-09CBDB4CF22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2CAC14-9601-4DDA-9ED5-6F2ED8D0111A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2CAC14-9601-4DDA-9ED5-6F2ED8D0111A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2CAC14-9601-4DDA-9ED5-6F2ED8D0111A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2CAC14-9601-4DDA-9ED5-6F2ED8D0111A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

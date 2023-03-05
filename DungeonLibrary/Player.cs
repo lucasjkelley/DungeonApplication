@@ -32,7 +32,12 @@ namespace DungeonLibrary
                 case Race.Malkovich:
                     HitChance += 7;
                     break;
-
+                case Race.Orc:
+                    Block += 4;
+                    break;
+                case Race.Demon:
+                    MaxLife += 5;
+                    break;
             }
             #endregion
         }
@@ -67,11 +72,8 @@ namespace DungeonLibrary
 
         public override int CalcDamage()
         {
-            //Create a random object
             Random rand = new Random();
-            //determine the damage
             int damage = rand.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage + 1);
-            //return the damage
             return damage;
         }
 

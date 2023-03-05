@@ -39,7 +39,6 @@ namespace DungeonLibrary
         public static void DoBattle(Player player, Monster monster)
         {
             DoAttack(player, monster);
-            //If the Monster survives, then they can attack
             if (monster.Life > 0)
             {
                 DoAttack(monster, player);
