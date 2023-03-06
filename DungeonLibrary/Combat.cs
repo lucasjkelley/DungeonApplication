@@ -9,27 +9,22 @@ namespace DungeonLibrary
 {
     public class Combat
     {
-        //This is NOT a datatype class, so it will not have fields or props or ctors.
-        //It will simply servie as a "warehouse" for a variety of combat-related methods.
+        //no fields or props needed, just methods to call 
 
         public static void DoAttack(Character attacker, Character defender)
         {
-            //get a random number from 1-100; 
+            
             int roll = new Random().Next(1, 101);
-            Thread.Sleep(200);
-            //The attacker "hits" if the roll is less than or equal to the attackers hitchance - defenders block.
+            Thread.Sleep(200);            
             if (roll <= (attacker.CalcHitChance() - defender.CalcBlock()))
-            {
-                //calc the damage
-                int damageDealt = attacker.CalcDamage();
-                //assign that damage to the defenders life
-                defender.Life -= damageDealt;
-                //output our results
+            {                
+                int damageDealt = attacker.CalcDamage();                
+                defender.Life -= damageDealt;                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{attacker.Name} hit {defender.Name} for {damageDealt} damage!");
                 Console.ResetColor();
             }
-            else //the attacker missed
+            else 
             {
                 Console.WriteLine($"{attacker.Name} missed!");
             }

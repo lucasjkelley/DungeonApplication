@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,10 @@ namespace DungeonLibrary
             MinDamage = minDamage;
             Description = description;
         }
-        public Monster() { }
+        public Monster() 
+        {
+                        
+        }
 
         //Methods
         public override string ToString()
@@ -76,7 +80,8 @@ namespace DungeonLibrary
             };
 
             return monsters[new Random().Next(monsters.Count)];
-
+                       
         }
+        
     }
 }

@@ -22,6 +22,7 @@ namespace DungeonLibrary
         {
             Name = "a Lowly Squire";
             MaxLife = 6;
+            Life = 6;
             HitChance = 25;
             Block = 20;
             MaxDamage = 5;
