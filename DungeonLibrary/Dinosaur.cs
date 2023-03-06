@@ -23,6 +23,7 @@ namespace DungeonLibrary
         {
             Name = "a Microraptor";
             MaxLife = 6;
+            Life = 3;
             HitChance = 25;
             Block = 0;
             MaxDamage = 5;

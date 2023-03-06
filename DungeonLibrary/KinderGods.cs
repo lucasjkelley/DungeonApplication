@@ -20,8 +20,9 @@ namespace DungeonLibrary
         }
         public KinderGods()
         {
-            Name = "The most hated Teletubby";
+            Name = "The most hated Teletubby";            
             MaxLife = 6;
+            Life = 6;
             HitChance = 25;
             Block = 0;
             MaxDamage = 5;
@@ -39,7 +40,7 @@ namespace DungeonLibrary
 
         public override int CalcBlock()
         {
-            if (YouthfulSprint == true && MaxLife <= 7)
+            if (YouthfulSprint == true && Life >0 && Life <= 7)
 
             {
                 Console.WriteLine("The souls of the children I have consumed grants me enhanced speed! +5 Hit Chance!");
